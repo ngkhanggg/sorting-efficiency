@@ -1,10 +1,11 @@
 public class QuickSorter implements CanSort {
 
+  //This version of the method just sorts the array. It existing allows isRecordingTime, isRecordingIterations, recordingName to have default parameters
   public void sort(int[] dataToSort) {
     recursiveSort(dataToSort, 0, dataToSort.length-1);
   }
 
-  private void recursiveSort(int[] dataToSort, int left, int right) {
+  private void recursiveSort(int[] dataToSort, left, right) {
     
     // Left should not be to the right of right. If it is, don't run the function. If Left and right are equal, that means its asking for a singe entry, which is sorted already so nothing needs to be done.
     if (left >= right) {
@@ -25,10 +26,14 @@ public class QuickSorter implements CanSort {
     while (frontCounter < backCounter) {
 
       //Find a number on the left side that is too big (Or equal to the partition)
-      while (dataToSort[frontCounter] < partition) {frontCounter++;}
+      while (dataToSort[frontCounter] < partition) {
+        frontCounter++;
+      }
 
       //Find a number on the right side that is too small (Or equal to the partition)
-      while (dataToSort[backCounter] > partition) {backCounter--;}
+      while (dataToSort[backCounter] > partition) {
+        backCounter--;
+      }
 
       //Don't do any swapping if the counters have passed each other
       if (frontCounter <= backCounter) {
