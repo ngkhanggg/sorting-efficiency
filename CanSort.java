@@ -1,5 +1,5 @@
 public interface CanSort {
 
-  public void sort();
+  public void sort(int[] dataToSort);
 
 }
