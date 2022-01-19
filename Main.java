@@ -1,5 +1,6 @@
 public class Main {
 	public static void main(String[] args) {
-		System.out.println("Hello, World!");
+		BubbleSort bubblesort = new BubbleSort();
+    bubblesort.bubblesort();
 	}
 }
