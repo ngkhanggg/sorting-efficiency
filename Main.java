@@ -2,14 +2,13 @@ import java.util.Random;
 
 public class Main {
     public static void main(String[] args) {
-
-        int[] unsortedArr = generateUnsortedArr(10);
+        int[] unsortedArr = generateArr(99);
 
         for (int num: unsortedArr) {
             System.out.print(num + " ");
         }
 
-        int[] sortedArr = sort("selection", unsortedArr);
+        int[] sortedArr = useSort("selection", unsortedArr);
 
         System.out.println();
 
@@ -18,10 +17,10 @@ public class Main {
         }
     }
 
-    public static int[] generateUnsortedArr(int size) {
+    public static int[] generateArr(int length) {
         Random rd = new Random();
 
-        int[] arr = new int[size];
+        int[] arr = new int[length];
 
         for (int i = 0; i < arr.length; i++) {
             arr[i] = rd.nextInt(99) + 1;
@@ -30,28 +29,13 @@ public class Main {
         return arr;
     }
 
-    public static int[] sort(String typeOfSorter, int[] arr) {
-        switch(typeOfSorter) {
+    public static int[] useSort(String type, int[] arr) {
+        switch(type) {
             case "selection":
-                return selectionSort(arr);
+                SelectionSort sort = new SelectionSort();
+                return sort.sort(arr);
             default:
                 return arr;
         }
-    }
-
-    public static int[] selectionSort(int[] arr) {
-        int[] newArr = arr.clone();
-
-        for (int i = 0; i < newArr.length - 1; i++) {
-            for (int j = i + 1; j < newArr.length; j++) {
-                if (newArr[i] > newArr[j]) {
-                    int temp = newArr[i];
-                    newArr[i] = newArr[j];
-                    newArr[j] = temp;
-                }
-            }
-        }
-
-        return newArr;
     }
 }
