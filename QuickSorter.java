@@ -5,7 +5,7 @@ public class QuickSorter implements CanSort {
     recursiveSort(dataToSort, 0, dataToSort.length-1);
   }
 
-  private void recursiveSort(int[] dataToSort, left, right) {
+  private void recursiveSort(int[] dataToSort, int left, int right) {
     
     // Left should not be to the right of right. If it is, don't run the function. If Left and right are equal, that means its asking for a singe entry, which is sorted already so nothing needs to be done.
     if (left >= right) {
@@ -45,7 +45,6 @@ public class QuickSorter implements CanSort {
         frontCounter++;
         backCounter--;
       }
-      
     }
     
     //Sort the value left of the partition
