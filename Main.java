@@ -14,6 +14,8 @@ public class Main {
 		System.out.println();
         int[] sortedArr2 = useSort("bubble", unsortedArr);
 
+
+
 		// add an empty line
         // System.out.println();
 
@@ -39,16 +41,20 @@ public class Main {
 	// use a particular type of sortings using switch
     public static int[] useSort(String type, int[] arr) {
         switch(type) {
-            case "selection":
-				System.out.println("Selection Sort");
-                SelectionSort selection = new SelectionSort();
-                return selection.sort(arr);
-			case "bubble":
-				System.out.println("Bubble Sort");
-				BubbleSort bubble = new BubbleSort();
-                return bubble.sort(arr);
-            default:
-                return arr;
+          case "selection":
+				    System.out.println("Selection Sort");
+            SelectionSort selection = new SelectionSort();
+            return selection.sort(arr);
+          case "bubble":
+            System.out.println("Bubble Sort");
+            BubbleSort bubble = new BubbleSort();
+            return bubble.sort(arr);
+          case "quick":
+            System.out.println("Quick Sort");
+            QuickSort quick = new QuickSort();
+            return quick.sort(arr);
+          default:
+            return arr;
         }
     }
 }
