@@ -1,5 +1,8 @@
+
+
+
 public class SelectionSort extends Sorter {
-    public int[] sort(int[] unsortedArr) {
+    public int[] sort(int[] unsortedArr, String order) {
         long start = System.currentTimeMillis(); // starting time
 
 		// count the number of comparisons

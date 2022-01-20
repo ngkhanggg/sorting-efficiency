@@ -1,7 +1,10 @@
+
+
+
 public class QuickSort extends Sorter {
 
   //This version of the method just sorts the array. It existing allows isRecordingTime, isRecordingIterations, recordingName to have default parameters
-  public int[] sort(int[] unsortedData) {
+  public int[] sort(int[] unsortedData, String order) {
     
     int[] dataToSort = unsortedData.clone();
 

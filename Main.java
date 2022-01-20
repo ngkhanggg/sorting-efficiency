@@ -1,6 +1,10 @@
 import java.util.Random;
 
 public class Main {
+	private static BubbleSort bubble = new BubbleSort();
+	private static SelectionSort selection = new SelectionSort();
+	private static QuickSort quick = new QuickSort();
+
     public static void main(String[] args) {
         int[] unsortedArr = generateArr(9999); // initialize unsorted array
 
@@ -10,11 +14,9 @@ public class Main {
         // }
 
 		// initialize sorted array
-        int[] sortedArr1 = useSort("selection", unsortedArr);
+        int[] sortedArr1 = useSort(unsortedArr, "bubble", "ascending");
 		System.out.println();
-        int[] sortedArr2 = useSort("bubble", unsortedArr);
-
-
+        int[] sortedArr2 = useSort(unsortedArr, "selection", "descending");
 
 		// add an empty line
         // System.out.println();
@@ -39,22 +41,19 @@ public class Main {
     }
 
 	// use a particular type of sortings using switch
-    public static int[] useSort(String type, int[] arr) {
+    public static int[] useSort(int[] arr, String type, String order) {
         switch(type) {
-          case "selection":
-				    System.out.println("Selection Sort");
-            SelectionSort selection = new SelectionSort();
-            return selection.sort(arr);
-          case "bubble":
-            System.out.println("Bubble Sort");
-            BubbleSort bubble = new BubbleSort();
-            return bubble.sort(arr);
-          case "quick":
-            System.out.println("Quick Sort");
-            QuickSort quick = new QuickSort();
-            return quick.sort(arr);
-          default:
-            return arr;
+			case "bubble":
+				System.out.println("Bubble Sort");
+				return bubble.sort(arr, order);
+			case "selection":
+				System.out.println("Selection Sort");
+				return selection.sort(arr, order);
+			case "quick":
+				System.out.println("Quick Sort");
+				return quick.sort(arr, order);
+			default:
+				return arr;
         }
     }
 }

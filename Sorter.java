@@ -3,7 +3,7 @@ public abstract class Sorter {
     long lastSortSpeed;
     int numLastSortComparisons;
 
-    public abstract int[] sort(int[] unsortedArr);
+    public abstract int[] sort(int[] unsortedArr, String order);
 
     public void printExecutionTime(int sizeOfArr, long duration) {
         System.out.printf("It takes %s milliseconds to sort %s numbers", duration, sizeOfArr);
