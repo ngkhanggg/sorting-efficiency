@@ -12,12 +12,12 @@ public class Main {
 	private static QuickSort quick = new QuickSort();
 
     public static void main(String[] args) {
-        int[] unsortedArr = generateArr(9999); // initialize unsorted array
+        int[] unsortedArr = generateArr(10); // initialize unsorted array
 
 		// display all the numbers in the unsorted array
-        // for (int num: unsortedArr) {
-        //     System.out.print(num + " ");
-        // }
+        for (int num: unsortedArr) {
+            System.out.print(num + " ");
+        }
 
 		// initialize sorted array
         int[] sortedArr1 = useSort(unsortedArr, "bubble", "ascending");
@@ -28,9 +28,13 @@ public class Main {
         // System.out.println();
 
 		// display all the numbers in the sorted array
-        // for (int num: sortedArr) {
-        //     System.out.print(num + " ");
-        // }
+        for (int num: sortedArr1) {
+            System.out.print(num + " ");
+        }
+
+		for (int num: sortedArr2) {
+            System.out.print(num + " ");
+        }
     }
 
 	// generate an array with random numbers

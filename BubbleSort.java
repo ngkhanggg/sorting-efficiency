@@ -12,7 +12,7 @@ public class BubbleSort extends Sorter {
         int[] arr = unsortedArr.clone();
 
         for (int i = 0; i < arr.length - 1; i++) {
-            for (int j = i + 1; j < arr.length; j++) {
+            for (int j = 0; j < arr.length - i - 1; j++) {
 				int temp = unsortedArr[j];
 
 				if (order.equals("ascending")) {
