@@ -24,6 +24,11 @@ public class Main {
         int[] sortedArr1 = useSort(unsortedArr, "bubble", "ascending");
 		System.out.println();
         int[] sortedArr2 = useSort(unsortedArr, "selection", "descending");
+    
+      //TODO: output to the txt file
+
+      //TODO: output the time and loop pass (Gotten from the sort instances)
+
 
 		// display all the numbers in the sorted array
 		System.out.println();
@@ -44,7 +49,7 @@ public class Main {
         int[] arr = new int[length];
 
         for (int i = 0; i < arr.length; i++) {
-            arr[i] = rd.nextInt(99) + 1;
+            arr[i] = rd.nextInt(20000) - 10000;
         }
 
         return arr;
