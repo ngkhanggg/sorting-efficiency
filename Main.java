@@ -12,7 +12,8 @@ public class Main {
 	private static QuickSort quick = new QuickSort();
 
     public static void main(String[] args) {
-        int[] unsortedArr = generateArr(10); // initialize unsorted array
+        int[] unsortedArr = generateArr(10); 
+      // initialize unsorted array
 
 		// display all the numbers in the unsorted array
         for (int num: unsortedArr) {
