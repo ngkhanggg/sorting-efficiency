@@ -12,7 +12,7 @@ public class QuickSort extends Sorter {
 
     this.numLastSortComparisons = 0;
 
-    recursiveSort(dataToSort, 0, dataToSort.length-1);
+    recursiveSort(dataToSort, 0, dataToSort.length-1, order);
 
     long timerEnd = System.currentTimeMillis(); // ending time
 
@@ -22,7 +22,7 @@ public class QuickSort extends Sorter {
     return dataToSort;
   }
 
-  private void recursiveSort(int[] dataToSort, int left, int right) {
+  private void recursiveSort(int[] dataToSort, int left, int right, String order) {
     
     // Left should not be to the right of right. If it is, don't run the function. If Left and right are equal, that means its asking for a singe entry, which is sorted already so nothing needs to be done.
     if (left >= right) {
@@ -43,20 +43,36 @@ public class QuickSort extends Sorter {
     while (frontCounter < backCounter) {
       this.numLastSortComparisons++;
 
-
-      //Find a number on the left side that is too big (Or equal to the partition)
-      while (dataToSort[frontCounter] < partition) {
+      if (order == "ascending") {
+        //Find a number on the left side that is too big (Or equal to the partition)
+        while (dataToSort[frontCounter] < partition) {
+          this.numLastSortComparisons++;
+          frontCounter++;
+        }
         this.numLastSortComparisons++;
-        frontCounter++;
-      }
-      this.numLastSortComparisons++;
 
-      //Find a number on the right side that is too small (Or equal to the partition)
-      while (dataToSort[backCounter] > partition) {
+        //Find a number on the right side that is too small (Or equal to the partition)
+        while (dataToSort[backCounter] > partition) {
+          this.numLastSortComparisons++;
+          backCounter--;
+        }
         this.numLastSortComparisons++;
-        backCounter--;
+      } else if (order == "descending") {
+        //Find a number on the left side that is too big (Or equal to the partition)
+        while (dataToSort[frontCounter] > partition) {
+          this.numLastSortComparisons++;
+          frontCounter++;
+        }
+        this.numLastSortComparisons++;
+
+        //Find a number on the right side that is too small (Or equal to the partition)
+        while (dataToSort[backCounter] < partition) {
+          this.numLastSortComparisons++;
+          backCounter--;
+        }
+        this.numLastSortComparisons++;
       }
-      this.numLastSortComparisons++;
+      
       
       //Don't do any swapping if the counters have passed each other
       this.numLastSortComparisons++;
@@ -74,10 +90,10 @@ public class QuickSort extends Sorter {
     this.numLastSortComparisons++;
     
     //Sort the value left of the partition
-    recursiveSort(dataToSort, frontCounter, right);
+    recursiveSort(dataToSort, frontCounter, right, order);
 
     //Sort the values right of the partition
-    recursiveSort(dataToSort, left, backCounter);
+    recursiveSort(dataToSort, left, backCounter, order);
 
     return;
   }
