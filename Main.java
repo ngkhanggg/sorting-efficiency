@@ -18,19 +18,19 @@ public class Main {
         for (int num: unsortedArr) {
             System.out.print(num + " ");
         }
+		System.out.println();
 
 		// initialize sorted array
         int[] sortedArr1 = useSort(unsortedArr, "bubble", "ascending");
 		System.out.println();
         int[] sortedArr2 = useSort(unsortedArr, "selection", "descending");
 
-		// add an empty line
-        // System.out.println();
-
 		// display all the numbers in the sorted array
+		System.out.println();
         for (int num: sortedArr1) {
             System.out.print(num + " ");
         }
+		System.out.println();
 
 		for (int num: sortedArr2) {
             System.out.print(num + " ");
