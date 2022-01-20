@@ -1,3 +1,9 @@
+/*
+
+REMEMBER TO ADD CHOICES SO THAT THE USER CAN CHOOSE WHICH ORDER (ASCENDING OR DESCENDING) TO SORT
+
+*/
+
 import java.util.Random;
 
 public class Main {
