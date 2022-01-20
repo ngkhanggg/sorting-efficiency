@@ -1,7 +1,6 @@
 public class SelectionSort extends Sorter {
     public int[] sort(int[] unsortedArr) {
-		// starting time
-        long start = System.currentTimeMillis();
+        long start = System.currentTimeMillis(); // starting time
 
 		// count the number of comparisons
         int count = 0;
@@ -20,11 +19,10 @@ public class SelectionSort extends Sorter {
             }
         }
 
-		// ending time
-        long end = System.currentTimeMillis();
+        long end = System.currentTimeMillis(); // ending time
 
 		// pass the variables to the parent class
-		// displaying duration and comparisons
+		// display duration and comparisons
         super.printExecutionTime(arr.length, end - start);
         System.out.println();
         super.printNumOfComparisons(arr.length, count);
