@@ -2,7 +2,7 @@ class BubbleSort
 {
   public void bubblesort()
   {
-    int arr[] = {7, 6, 5, 4, 3}; //test array
+    int arr[] = {7, 6, 5, 3}; //test array
     int nCounter = 0;
     int nLength = arr.length; //making .length into variable
     for (int i = 0; i < nLength - 1; i++) //runs through array
@@ -18,13 +18,18 @@ class BubbleSort
         }
       }
     }
-  printer(arr);
+  printer(arr, nCounter);
   }  
 
-  void printer(int arr[]) //Prints
+  void printer(int arr[], int nCounter) //Prints
   {
     int nLength = arr.length;
+    System.out.println("Sorted array:");
     for (int i = 0; i < nLength; i++)
-    System.out.println(arr[i] + " ");
+    {
+    System.out.print(arr[i] + ", ");
+    }
+    System.out.println("Number of Cycles:");
+    System.out.println(nCounter);
   } 
 }
