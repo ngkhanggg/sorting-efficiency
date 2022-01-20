@@ -2,7 +2,7 @@ import java.util.Random;
 
 public class Main {
     public static void main(String[] args) {
-        int[] unsortedArr = generateArr(999); // initialize unsorted array
+        int[] unsortedArr = generateArr(9999); // initialize unsorted array
 
 		// display all the numbers in the unsorted array
         // for (int num: unsortedArr) {
@@ -10,7 +10,9 @@ public class Main {
         // }
 
 		// initialize sorted array
-        int[] sortedArr = useSort("selection", unsortedArr);
+        int[] sortedArr1 = useSort("selection", unsortedArr);
+		System.out.println();
+        int[] sortedArr2 = useSort("bubble", unsortedArr);
 
 		// add an empty line
         // System.out.println();
