@@ -2,7 +2,7 @@ import java.util.Random;
 
 public class Main {
     public static void main(String[] args) {
-        int[] unsortedArr = generateArr(999999); // initialize unsorted array
+        int[] unsortedArr = generateArr(999); // initialize unsorted array
 
 		// display all the numbers in the unsorted array
         // for (int num: unsortedArr) {

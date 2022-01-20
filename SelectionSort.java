@@ -21,6 +21,7 @@ public class SelectionSort extends Sorter {
 
         long end = System.currentTimeMillis(); // ending time
 
+		// TEMPPORARY
 		// pass the variables to the parent class
 		// display duration and comparisons
         super.printExecutionTime(arr.length, end - start);
