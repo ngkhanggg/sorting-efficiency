@@ -1,4 +1,8 @@
 public abstract class Sorter {
+
+    long lastSortSpeed;
+    int numLastSortComparisons;
+
     public abstract int[] sort(int[] unsortedArr, String order);
 
     public void printExecutionTime(int sizeOfArr, long duration) {
