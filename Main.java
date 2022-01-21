@@ -68,36 +68,19 @@ public class Main {
     }
 
 	// use a particular type of sortings using switch
-    public static int[] useSort(int[] arr, String type, String order) {
-        switch(type) {
-          case "bubble":
-            System.out.println("Bubble Sort");
-            return bubble.sort(arr, order);
-          case "selection":
-            System.out.println("Selection Sort");
-            return selection.sort(arr, order);
-          case "quick":
-            System.out.println("Quick Sort");
-            return quick.sort(arr, order);
-          default:
-            return arr;
-        }
-    }
-
-	// use a particular type of sortings using switch
   public static int[] useSort(int[] arr, String type, String order) {
-      switch(type) {
-    case "bubble":
-      System.out.println("Bubble Sort");
-      return bubble.sort(arr, order);
-    case "selection":
-      System.out.println("Selection Sort");
-      return selection.sort(arr, order);
-    case "quick":
-      System.out.println("Quick Sort");
-      return quick.sort(arr, order);
-    default:
-      return arr;
-      }
+    switch(type) {
+      case "bubble":
+        System.out.println("Bubble Sort");
+        return bubble.sort(arr, order);
+      case "selection":
+        System.out.println("Selection Sort");
+        return selection.sort(arr, order);
+      case "quick":
+        System.out.println("Quick Sort");
+        return quick.sort(arr, order);
+      default:
+        return arr;
+    }
   }
 }
