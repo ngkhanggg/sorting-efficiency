@@ -7,35 +7,52 @@ REMEMBER TO ADD CHOICES SO THAT THE USER CAN CHOOSE WHICH ORDER (ASCENDING OR DE
 import java.util.Random;
 
 public class Main {
+
+  //If theres time, it might be nice to make this an array of some sort. It would make it easier to expand on, less hard coding.
 	private static BubbleSort bubble = new BubbleSort();
 	private static SelectionSort selection = new SelectionSort();
 	private static QuickSort quick = new QuickSort();
 
   public static void main(String[] args) {
 
-    int[] unsortedArr = generateArr(10); // initialize unsorted array
+    // TODO: Set up the GUI
 
+    // TODO: replace 10 with getting user input for the array size
+    int unsortedArraySize = 10;
+
+    // initializing unsorted array
+    int[] unsortedArr = generateArr(unsortedArraySize);
+
+    // TODO: Ask user for input on ascending or descending order for each sort instead of hard coding. Alternately, there could be one order variable that changes before each sort.
+    // The users choices to sort each array ascending or descending
+    String bubbleSortOrder = "ascending";
+    String selectionSortOrder = "ascending";
+    String quickSortOrder = "ascending";
+
+    // Call the sorting algorithms
+    // Recording just one of the sorting algorithm outputs as the sorted array
+    int[] sortedArr = useSort(unsortedArr, "bubble", bubbleSortOrder);
+    useSort(unsortedArr, "selection", selectionSortOrder);
+    useSort(unsortedArr, "quick", quickSortOrder);
+
+    // TODO: Use the sort classes to get the time and comparison count data
+
+    // TODO: Change this to outputting the unsorted array to the GUI
     // display all the numbers in the unsorted array
     for (int num: unsortedArr) {
         System.out.print(num + " ");
     }
     System.out.println();
 
-    // initialize sorted array
-    int[] sortedArr1 = useSort(unsortedArr, "bubble", "ascending");
-    System.out.println();
-    int[] sortedArr2 = useSort(unsortedArr, "selection", "descending");
-
+    // TODO: Change this to outputting the sorted array to the GUI
     // display all the numbers in the sorted array
     System.out.println();
-    for (int num: sortedArr1) {
+    for (int num: sortedArr) {
         System.out.print(num + " ");
     }
-    System.out.println();
 
-    for (int num: sortedArr2) {
-        System.out.print(num + " ");
-    }
+    // TODO: output the time and comparison count data for each sort
+
   }
 
 	// generate an array with random numbers
