@@ -17,12 +17,14 @@ public class BubbleSort extends Sorter {
         int temp = arr[j];
   
         if (order.equals("ascending")) {
+          this.lastNumSortComparisons++;
           if (arr[j] > arr[j + 1]) {
             arr[j] = arr[j + 1];
             arr[j + 1] = temp;
           }
         }
         else {
+          this.lastNumSortComparisons++;
           if (arr[j] < arr[j + 1]) {
             arr[j] = arr[j + 1];
             arr[j + 1] = temp;
