@@ -5,9 +5,6 @@ public class BubbleSort extends Sorter {
   public int[] sort(int[] unsortedArr, String order) {
     long start = System.currentTimeMillis(); // starting time
 
-    // count the number of comparisons
-    int count = 0;
-
     // clone/copy elements from the original array
     int[] arr = unsortedArr.clone();
 
@@ -29,8 +26,7 @@ public class BubbleSort extends Sorter {
             arr[j] = arr[j + 1];
             arr[j + 1] = temp;
           }
-        }     
-        count++;
+        }
       }
     }
 
