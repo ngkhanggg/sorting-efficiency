@@ -17,12 +17,14 @@ public class SelectionSort extends Sorter {
 
 				if (order.equals("ascending")) {
 					if (arr[i] > arr[j]) {
+            this.lastNumSortComparisons++;
 						arr[i] = arr[j];
 						arr[j] = temp;
 					}
 				}
 				else {
 					if (arr[i] < arr[j]) {
+            this.lastNumSortComparisons++;
 						arr[i] = arr[j];
 						arr[j] = temp;
 					}
@@ -33,12 +35,7 @@ public class SelectionSort extends Sorter {
 
         long end = System.currentTimeMillis(); // ending time
 
-		// TEMPPORARY
-		// pass the variables to the parent class
-		// display duration and comparisons
-        super.printExecutionTime(arr.length, end - start);
-        System.out.println();
-        super.printNumOfComparisons(arr.length, count);
+        this.lastSortSpeed = end - start;
 
         return arr;
     }
