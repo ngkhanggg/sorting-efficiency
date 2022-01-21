@@ -20,17 +20,18 @@ public class BubbleSort extends Sorter {
 				    	if (arr[j] > arr[j + 1]) {
 					     	arr[j] = arr[j + 1];
 					    	arr[j + 1] = temp;
-				 	}
-				}
+				 	    }
+				    }
 			    	else {
 				    	if (arr[j] < arr[j + 1]) {
 					  	  arr[j] = arr[j + 1];
 						    arr[j + 1] = temp;
-					}
-				}
+					    }
+			      }     
 				
 				count++;
-            }
+
+          }
         }
 
         long end = System.currentTimeMillis(); // ending time
@@ -43,5 +44,5 @@ public class BubbleSort extends Sorter {
         super.printNumOfComparisons(arr.length, count);
 
         return arr;
-    }
-}
+   }
+ }
