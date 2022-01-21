@@ -18,7 +18,7 @@ public class Main {
     // TODO: Set up the GUI
 
     // TODO: replace 10 with getting user input for the array size
-    int unsortedArraySize = 10;
+    int unsortedArraySize = 10000;
 
     // initializing unsorted array
     int[] unsortedArr = generateArr(unsortedArraySize);
@@ -36,6 +36,19 @@ public class Main {
     useSort(unsortedArr, "quick", quickSortOrder);
 
     // TODO: Use the sort classes to get the time and comparison count data
+
+    //Temporary output for the sorting times and comparisons
+    System.out.println("BubbleSort ran in " + bubble.getLastExecutionTime() + " milliseconds");
+    System.out.println("BubbleSort used " + bubble.getLastNumOfComparisons() + " Comparisons");
+    System.out.println();
+    System.out.println("SelectionSort ran in " + selection.getLastExecutionTime() + " milliseconds");
+    System.out.println("SelectionSort used " + selection.getLastNumOfComparisons() + " Comparisons");
+    System.out.println();
+    System.out.println("QuickSort ran in " + quick.getLastExecutionTime() + " milliseconds");
+    System.out.println("QuickSort used " + quick.getLastNumOfComparisons() + " Comparisons");
+    System.out.println();
+
+
 
     // TODO: Change this to outputting the unsorted array to the GUI
     // display all the numbers in the unsorted array
@@ -68,36 +81,16 @@ public class Main {
     }
 
 	// use a particular type of sortings using switch
-    public static int[] useSort(int[] arr, String type, String order) {
-        switch(type) {
-          case "bubble":
-            System.out.println("Bubble Sort");
-            return bubble.sort(arr, order);
-          case "selection":
-            System.out.println("Selection Sort");
-            return selection.sort(arr, order);
-          case "quick":
-            System.out.println("Quick Sort");
-            return quick.sort(arr, order);
-          default:
-            return arr;
-        }
-    }
-
-	// use a particular type of sortings using switch
   public static int[] useSort(int[] arr, String type, String order) {
-      switch(type) {
-    case "bubble":
-      System.out.println("Bubble Sort");
-      return bubble.sort(arr, order);
-    case "selection":
-      System.out.println("Selection Sort");
-      return selection.sort(arr, order);
-    case "quick":
-      System.out.println("Quick Sort");
-      return quick.sort(arr, order);
-    default:
-      return arr;
-      }
+    switch(type) {
+      case "bubble":
+        return bubble.sort(arr, order);
+      case "selection":
+        return selection.sort(arr, order);
+      case "quick":
+        return quick.sort(arr, order);
+      default:
+        return arr;
+    }
   }
 }
