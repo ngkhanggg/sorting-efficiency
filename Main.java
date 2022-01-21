@@ -7,63 +7,81 @@ REMEMBER TO ADD CHOICES SO THAT THE USER CAN CHOOSE WHICH ORDER (ASCENDING OR DE
 import java.util.Random;
 
 public class Main {
+
+  //If theres time, it might be nice to make this an array of some sort. It would make it easier to expand on, less hard coding.
 	private static BubbleSort bubble = new BubbleSort();
 	private static SelectionSort selection = new SelectionSort();
 	private static QuickSort quick = new QuickSort();
 
-    public static void main(String[] args) {
-        int[] unsortedArr = generateArr(10); // initialize unsorted array
+  public static void main(String[] args) {
 
-		// display all the numbers in the unsorted array
-        for (int num: unsortedArr) {
-            System.out.print(num + " ");
-        }
-		System.out.println();
+    // TODO: Set up the GUI
 
-		// initialize sorted array
-        int[] sortedArr1 = useSort(unsortedArr, "bubble", "ascending");
-		System.out.println();
-        int[] sortedArr2 = useSort(unsortedArr, "selection", "descending");
+    // TODO: replace 10 with getting user input for the array size
+    int unsortedArraySize = 10;
 
-		// display all the numbers in the sorted array
-		System.out.println();
-        for (int num: sortedArr1) {
-            System.out.print(num + " ");
-        }
-		System.out.println();
+    // initializing unsorted array
+    int[] unsortedArr = generateArr(unsortedArraySize);
 
-		for (int num: sortedArr2) {
-            System.out.print(num + " ");
-        }
+    // TODO: Ask user for input on ascending or descending order for each sort instead of hard coding. Alternately, there could be one order variable that changes before each sort.
+    // The users choices to sort each array ascending or descending
+    String bubbleSortOrder = "ascending";
+    String selectionSortOrder = "ascending";
+    String quickSortOrder = "ascending";
+
+    // Call the sorting algorithms
+    // Recording just one of the sorting algorithm outputs as the sorted array
+    int[] sortedArr = useSort(unsortedArr, "bubble", bubbleSortOrder);
+    useSort(unsortedArr, "selection", selectionSortOrder);
+    useSort(unsortedArr, "quick", quickSortOrder);
+
+    // TODO: Use the sort classes to get the time and comparison count data
+
+    // TODO: Change this to outputting the unsorted array to the GUI
+    // display all the numbers in the unsorted array
+    for (int num: unsortedArr) {
+        System.out.print(num + " ");
     }
+    System.out.println();
+
+    // TODO: Change this to outputting the sorted array to the GUI
+    // display all the numbers in the sorted array
+    System.out.println();
+    for (int num: sortedArr) {
+        System.out.print(num + " ");
+    }
+
+    // TODO: output the time and comparison count data for each sort
+
+  }
 
 	// generate an array with random numbers
-    public static int[] generateArr(int length) {
-        Random rd = new Random();
+  public static int[] generateArr(int length) {
+      Random rd = new Random();
 
-        int[] arr = new int[length];
+      int[] arr = new int[length];
 
-        for (int i = 0; i < arr.length; i++) {
-            arr[i] = rd.nextInt(99) + 1;
-        }
+      for (int i = 0; i < arr.length; i++) {
+          arr[i] = rd.nextInt(20000) - 10000;
+      }
 
-        return arr;
-    }
+      return arr;
+  }
 
 	// use a particular type of sortings using switch
-    public static int[] useSort(int[] arr, String type, String order) {
-        switch(type) {
-			case "bubble":
-				System.out.println("Bubble Sort");
-				return bubble.sort(arr, order);
-			case "selection":
-				System.out.println("Selection Sort");
-				return selection.sort(arr, order);
-			case "quick":
-				System.out.println("Quick Sort");
-				return quick.sort(arr, order);
-			default:
-				return arr;
-        }
-    }
+  public static int[] useSort(int[] arr, String type, String order) {
+      switch(type) {
+    case "bubble":
+      System.out.println("Bubble Sort");
+      return bubble.sort(arr, order);
+    case "selection":
+      System.out.println("Selection Sort");
+      return selection.sort(arr, order);
+    case "quick":
+      System.out.println("Quick Sort");
+      return quick.sort(arr, order);
+    default:
+      return arr;
+      }
+  }
 }
