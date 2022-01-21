@@ -52,17 +52,17 @@ public class Main {
 
     // TODO: Change this to outputting the unsorted array to the GUI
     // display all the numbers in the unsorted array
-    for (int num: unsortedArr) {
-        System.out.print(num + " ");
-    }
-    System.out.println();
+    // for (int num: unsortedArr) {
+    //     System.out.print(num + " ");
+    // }
+    // System.out.println();
 
     // TODO: Change this to outputting the sorted array to the GUI
     // display all the numbers in the sorted array
-    System.out.println();
-    for (int num: sortedArr) {
-        System.out.print(num + " ");
-    }
+    // System.out.println();
+    // for (int num: sortedArr) {
+    //     System.out.print(num + " ");
+    // }
 
     // TODO: output the time and comparison count data for each sort
 
