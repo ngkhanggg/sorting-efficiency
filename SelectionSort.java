@@ -3,7 +3,9 @@
 
 public class SelectionSort extends Sorter {
   public int[] sort(int[] unsortedArr, String order) {
-    long start = System.currentTimeMillis(); // starting time
+
+    // starting time
+    long start = System.currentTimeMillis();
 
     // clone/copy elements from the original array
     int[] arr = unsortedArr.clone();
@@ -31,8 +33,10 @@ public class SelectionSort extends Sorter {
       }
     }
 
-    long end = System.currentTimeMillis(); // ending time
+    // ending time
+    long end = System.currentTimeMillis();
 
+    // Record time elapsed
     this.lastSortSpeed = end - start;
 
     return arr;

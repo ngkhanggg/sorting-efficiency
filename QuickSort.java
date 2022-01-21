@@ -8,14 +8,15 @@ public class QuickSort extends Sorter {
     
     int[] dataToSort = unsortedData.clone();
 
-    long timerStart = System.currentTimeMillis(); // starting time
-
-    this.lastNumSortComparisons = 0;
+    // starting time
+    long timerStart = System.currentTimeMillis();
 
     recursiveSort(dataToSort, 0, dataToSort.length-1, order);
 
-    long timerEnd = System.currentTimeMillis(); // ending time
+    // ending time
+    long timerEnd = System.currentTimeMillis();
 
+    // Record time elapsed
     this.lastSortSpeed = timerEnd - timerStart;
     
 
@@ -32,18 +33,20 @@ public class QuickSort extends Sorter {
     //The number that will divide the array into higher than and lower than numbers
     int partition = dataToSort[(int)((left+right) / 2)];
 
-    //The counter that will search for numbers higher than the partition
+    //The counter that will search for numbers to put after the partition
     int frontCounter = left;
 
-    //The counter that will search for numbers lower than the partition
+    //The counter that will search for numbers to put before the partition
     int backCounter = right;
+
+    // Used during swaps
     int temp;
 
-    //If the counters pass each other, we must have looked at the entire array
+    //If the counters pass each other, we must have looked at the entire array already
     while (frontCounter < backCounter) {
-      this.lastNumSortComparisons++;
 
       if (order == "ascending") {
+
         //Find a number on the left side that is too big (Or equal to the partition)
         while (dataToSort[frontCounter] < partition) {
           this.lastNumSortComparisons++;
@@ -57,7 +60,9 @@ public class QuickSort extends Sorter {
           backCounter--;
         }
         this.lastNumSortComparisons++;
+
       } else if (order == "descending") {
+        
         //Find a number on the left side that is too big (Or equal to the partition)
         while (dataToSort[frontCounter] > partition) {
           this.lastNumSortComparisons++;
@@ -85,7 +90,6 @@ public class QuickSort extends Sorter {
         frontCounter++;
         backCounter--;
       }
-      this.lastNumSortComparisons++;
     }
     this.lastNumSortComparisons++;
     
