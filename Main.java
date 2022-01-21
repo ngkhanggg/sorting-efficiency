@@ -6,7 +6,6 @@ REMEMBER TO ADD CHOICES SO THAT THE USER CAN CHOOSE WHICH ORDER (ASCENDING OR DE
 
 import java.util.Random;
 
-
 public class Main {
 
   //If theres time, it might be nice to make this an array of some sort. It would make it easier to expand on, less hard coding.
@@ -84,4 +83,21 @@ public class Main {
             return arr;
         }
     }
+
+	// use a particular type of sortings using switch
+  public static int[] useSort(int[] arr, String type, String order) {
+      switch(type) {
+    case "bubble":
+      System.out.println("Bubble Sort");
+      return bubble.sort(arr, order);
+    case "selection":
+      System.out.println("Selection Sort");
+      return selection.sort(arr, order);
+    case "quick":
+      System.out.println("Quick Sort");
+      return quick.sort(arr, order);
+    default:
+      return arr;
+      }
+  }
 }
