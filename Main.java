@@ -212,8 +212,6 @@ public class Main implements ActionListener {
         String sorter = String.valueOf(boxOfSortingMethods.getSelectedItem());
         String sortOrder = String.valueOf(boxOfSortingOrders.getSelectedItem());
 
-        System.out.printf("%s\n%s\n%s", arraySize, sorter, sortOrder);
-
         // create an array - DONE
         int[] unsortedArr = arrayGenerator(arraySize);
 
@@ -263,7 +261,7 @@ public class Main implements ActionListener {
             s += arr[i] + ", ";
         }
         s += arr[arr.length - 1] + "}";
-        
+        System.out.println(s);
     }
 
     // add sorted array into panel
@@ -274,7 +272,7 @@ public class Main implements ActionListener {
             s += arr[i] + ", ";
         }
         s += arr[arr.length - 1] + "}";
-        
+        System.out.println(s);
     }
 
     // disable comboboxes - DONE
