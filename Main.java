@@ -49,6 +49,7 @@ public class Main implements ActionListener {
     JPanel durationPanel = new JPanel();
     JPanel arrayPanel = new JPanel();
 
+	// initialize sorters
     BubbleSort bubble = new BubbleSort();
     SelectionSort selection = new SelectionSort();
     QuickSort quick = new QuickSort();
@@ -145,6 +146,7 @@ public class Main implements ActionListener {
     // buttons
     @Override
     public void actionPerformed(ActionEvent e) {
+		// start button
         if (e.getSource() == startButton) {
             disableComboboxes();
 
@@ -159,11 +161,13 @@ public class Main implements ActionListener {
             
         }
 
+		// reset button
         if (e.getSource() == resetButton) {
             frame.dispose();
             new Main();
         }
 
+		// close button
         if (e.getSource() == closeButton) {
             System.exit(0);
         }
@@ -218,8 +222,9 @@ public class Main implements ActionListener {
         // sort the array - DONE
         int[] sortedArr = sort(unsortedArr, sorter, sortOrder);
 
-        displayUnsortedArray(unsortedArr);
-        displaySortedArray(sortedArr);
+		// display unsorted and sorted array
+        displayArray(unsortedArr);
+        displayArray(sortedArr);
     }
 
     // add labels to duration panel
@@ -253,19 +258,8 @@ public class Main implements ActionListener {
         durationPanel.add(durationOfMergeSort);
     }
 
-    // add unsorted array into panel
-    public void displayUnsortedArray(int[] arr) {
-        String s = "{";
-
-        for (int i = 0; i < arr.length - 1; i++) {
-            s += arr[i] + ", ";
-        }
-        s += arr[arr.length - 1] + "}";
-        System.out.println(s);
-    }
-
-    // add sorted array into panel
-    public void displaySortedArray(int[] arr) {
+    // turn an array into a string
+    public void displayArray(int[] arr) {
         String s = "{";
 
         for (int i = 0; i < arr.length - 1; i++) {
