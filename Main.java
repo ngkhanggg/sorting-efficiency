@@ -49,9 +49,9 @@ public class Main implements ActionListener {
     JPanel durationPanel = new JPanel();
     JPanel arrayPanel = new JPanel();
 
-    static BubbleSort bubble = new BubbleSort();
-    static SelectionSort selection = new SelectionSort();
-    static QuickSort quick = new QuickSort();
+    BubbleSort bubble = new BubbleSort();
+    SelectionSort selection = new SelectionSort();
+    QuickSort quick = new QuickSort();
 
     public Main() {
         // set up frame - DONE
@@ -183,7 +183,7 @@ public class Main implements ActionListener {
     }
 
     // choose between sorting methods - DONE
-    public static int[] sort(int[] arr, String sorter, String order) {
+    public int[] sort(int[] arr, String sorter, String order) {
         switch(sorter) {
             case "Bubble Sort":
                 selection.sort(arr, order);
