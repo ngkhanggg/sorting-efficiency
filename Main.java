@@ -1,5 +1,9 @@
 import java.awt.*;
 import java.awt.event.*;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Random;
 
 import javax.swing.BorderFactory;
@@ -8,6 +12,7 @@ import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.SwingConstants;
 import javax.swing.border.Border;
 
 public class Main implements ActionListener {
@@ -15,6 +20,10 @@ public class Main implements ActionListener {
     final Integer[] sizesOfArray = {10, 100, 1000};
     final String[] namesOfSorters = {"Bubble Sort", "Selection Sort", "Quick Sort", "Merge Sort"};
     final String[] sortingOrders = {"Ascending", "Descending"};
+
+    // arrays
+    static int[] arrUnsorted;
+    static int[] arrSorted;
 
     // border to use consistently
     final Border blackline = BorderFactory.createLineBorder(Color.black);
@@ -43,6 +52,9 @@ public class Main implements ActionListener {
     JLabel durationOfSelectionSort = new JLabel();
     JLabel durationOfQuickSort = new JLabel();
     JLabel durationOfMergeSort = new JLabel();
+    JLabel unsortedArr = new JLabel();
+    JLabel sortedArr = new JLabel();
+    JLabel cannotOutputArr = new JLabel();
 
     // panels
     JPanel optionPanel = new JPanel();
@@ -55,14 +67,14 @@ public class Main implements ActionListener {
     QuickSort quick = new QuickSort();
 
     public Main() {
-        // set up frame - DONE
+        // set up frame
         frame.setTitle("Sorting Efficiency");
         frame.setSize(1200, 600);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setResizable(false);
         frame.setLayout(null);
 
-        // set up labels for the option panel - DONE
+        // set up labels for the option panel
         messSizeOfArray.setFont(myFont);
         messSizeOfArray.setText("Select the size of your array: ");
         messSizeOfArray.setBounds(20, 20, 1000, 20);
@@ -88,19 +100,19 @@ public class Main implements ActionListener {
         boxOfSortingOrders.setBounds(155, 109, 140, 25);
         boxOfSortingOrders.addActionListener(this);
 
-        // set up start button - DONE
+        // set up start button
         startButton.setFont(myFont);
         startButton.setBounds(150, 160, 100, 25);
         startButton.setText("Start");
         startButton.addActionListener(this);
 
-        // set up reset button - DONE
+        // set up reset button
         resetButton.setFont(myFont);
         resetButton.setBounds(70, 160, 100, 25);
         resetButton.setText("Reset");
         resetButton.addActionListener(this);
 
-        // set up reset button - DONE
+        // set up reset button
         closeButton.setFont(myFont);
         closeButton.setBounds(220, 160, 100, 25);
         closeButton.setText("Close");
@@ -129,18 +141,18 @@ public class Main implements ActionListener {
         arrayPanel.setSize(796, 558);
         arrayPanel.setLocation(404, 0);
         arrayPanel.setBorder(blackline);
+        arrayPanel.setLayout(null);
+        arrayPanel.add(unsortedArr);
+        arrayPanel.add(sortedArr);
+        arrayPanel.add(cannotOutputArr);
 
-        // add components to the frame - DONE
+        // add components to the frame
         frame.add(optionPanel);
         frame.add(durationPanel);
         frame.add(arrayPanel);
 
-        // make frame visible - DONE
+        // make frame visible
         frame.setVisible(true);
-    }
-
-    public static void main(String[] args) {
-        new Main();
     }
 
     // buttons
@@ -155,10 +167,16 @@ public class Main implements ActionListener {
             setupDurationPanel();
 
             optionPanel.repaint(); // update panel
-            optionPanel.remove(startButton);
+            optionPanel.remove(startButton); // remove start button
             optionPanel.add(resetButton);
             optionPanel.add(closeButton);
-            
+
+            try {
+                createTwoTextFiles();
+            }
+            catch (IOException e1) {
+                e1.printStackTrace();
+            }
         }
 
 		// reset button
@@ -173,7 +191,7 @@ public class Main implements ActionListener {
         }
     }
 
-    // generate an array with random numbers - DONE
+    // generate an array with random numbers
     public static int[] arrayGenerator(int size) {
         Random rd = new Random();
 
@@ -186,7 +204,7 @@ public class Main implements ActionListener {
         return arr;
     }
 
-    // choose between sorting methods - DONE
+    // choose between sorting methods
     public int[] sort(int[] arr, String sorter, String order) {
         switch(sorter) {
             case "Bubble Sort":
@@ -211,35 +229,36 @@ public class Main implements ActionListener {
 
     // proceed the sorting
     public void proccedSorting() {
-        // get the items from the comboboxes - DONE
+        // get the items from the comboboxes
         int arraySize = (int)boxOfSizesOfArray.getSelectedItem();
         String sorter = String.valueOf(boxOfSortingMethods.getSelectedItem());
         String sortOrder = String.valueOf(boxOfSortingOrders.getSelectedItem());
 
-        // create an array - DONE
+        // create an array
         int[] unsortedArr = arrayGenerator(arraySize);
 
-        // sort the array - DONE
+        // sort the array
         int[] sortedArr = sort(unsortedArr, sorter, sortOrder);
 
-		// display unsorted and sorted array
-        displayArray(unsortedArr);
-        displayArray(sortedArr);
+        arrUnsorted = unsortedArr.clone();
+        arrSorted = sortedArr.clone();
+
+        addArraysToPanel(arraySize, getArray(unsortedArr), getArray(sortedArr));
     }
 
     // add labels to duration panel
     public void setupDurationPanel() {
-        // duration of bubble sort as output - DONE
+        // duration of bubble sort as output
         durationOfBubbleSort.setFont(myFont);
         durationOfBubbleSort.setText(bubble.stringForGUI());
         durationOfBubbleSort.setBounds(20, 20, 250, 90);
         
-        // duration of selection sort as output - DONE
+        // duration of selection sort as output
         durationOfSelectionSort.setFont(myFont);
         durationOfSelectionSort.setText(selection.stringForGUI());
         durationOfSelectionSort.setBounds(20, 100, 250, 90);
 
-        // duration of quick sort as output - DONE
+        // duration of quick sort as output
         durationOfQuickSort.setFont(myFont);
         durationOfQuickSort.setText(quick.stringForGUI());
         durationOfQuickSort.setBounds(20, 180, 250, 90);
@@ -259,20 +278,77 @@ public class Main implements ActionListener {
     }
 
     // turn an array into a string
-    public void displayArray(int[] arr) {
-        String s = "{";
+    public String getArray(int[] arr) {
+        String s = "";
 
         for (int i = 0; i < arr.length - 1; i++) {
             s += arr[i] + ", ";
         }
-        s += arr[arr.length - 1] + "}";
-        System.out.println(s);
+        s += arr[arr.length - 1];
+        
+        return s;
     }
 
-    // disable comboboxes - DONE
+    // add arrays to panel
+    public void addArraysToPanel(int size, String unsortedArray, String sortedArray) {
+        arrayPanel.repaint();
+        
+        if (size == 1000) {
+            String mess = "You really think you can output 2000 numbers in side this little panel? Close this program and check the two text files in your folder!";
+            cannotOutputArr.setFont(myFont);
+            cannotOutputArr.setBounds(20, 20, 740, 300);
+            cannotOutputArr.setText("<html><p style=\"width:550px\">" + mess + "</p></html>");
+            cannotOutputArr.setVerticalAlignment(SwingConstants.TOP);
+        }
+        else {
+            unsortedArr.setFont(myFont);
+            unsortedArr.setBounds(10, 10, 775, 300);
+            unsortedArr.setText("<html>Unsorted Array<br/><br/><p style=\"width:570px\">"+unsortedArray+"</p></html>");
+            unsortedArr.setVerticalAlignment(SwingConstants.TOP);
+
+            sortedArr.setFont(myFont);
+            sortedArr.setBounds(10, 250, 775, 300);
+            sortedArr.setText("<html>Sorted Array<br/><br/><p style=\"width:570px\">"+sortedArray+"</p></html>");
+            sortedArr.setVerticalAlignment(SwingConstants.TOP);
+        }
+    }
+
+    // create two txt file
+    public void createTwoTextFiles() throws IOException {
+        try {
+            // writers
+            PrintWriter fout1 = new PrintWriter(new FileWriter("Unsorted Array.txt"));
+            PrintWriter fout2 = new PrintWriter(new FileWriter("Sorted Array.txt"));
+
+            // loop through elements and write them in the text file
+            for (int i = 0; i < arrUnsorted.length; i++) {
+                fout1.println(arrUnsorted[i]);
+                fout2.println(arrSorted[i]);
+            }
+
+            // close writers
+            fout1.close();
+            fout2.close();
+        }
+
+        // exceptions
+        catch(FileNotFoundException e) {
+            throw e;
+        }
+        catch(IOException e) {
+            throw e;
+        }
+    }
+
+    // disable comboboxes
     public void disableComboboxes() {
         boxOfSizesOfArray.setEnabled(false);
         boxOfSortingMethods.setEnabled(false);
         boxOfSortingOrders.setEnabled(false);
+    }
+
+    // start program
+    public static void main(String[] args) {
+        new Main();
     }
 }
