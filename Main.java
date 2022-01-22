@@ -18,7 +18,7 @@ public class Main {
     // TODO: Set up the GUI
 
     // TODO: replace 10 with getting user input for the array size
-    int unsortedArraySize = 5000;
+    int unsortedArraySize = 10;
 
     // initializing unsorted array
     int[] unsortedArr = generateArr(unsortedArraySize);
@@ -34,6 +34,7 @@ public class Main {
     int[] sortedArr = useSort(unsortedArr, "bubble", bubbleSortOrder);
     useSort(unsortedArr, "selection", selectionSortOrder);
     useSort(unsortedArr, "quick", quickSortOrder);
+    System.out.println();
 
     //Temporary output for the sorting times and comparisons
     System.out.println("BubbleSort ran in " + bubble.getLastExecutionTime() + " milliseconds");

@@ -4,19 +4,10 @@
 public class QuickSort extends Sorter {
 
   //This version of the method just sorts the array. It existing allows isRecordingTime, isRecordingIterations, recordingName to have default parameters
-  public int[] sort(int[] unsortedData, String order) {
+  public int[] internalSort(int[] unsortedData, String order) {
     int[] dataToSort = unsortedData.clone();
 
-    // starting time
-    long timerStart = System.currentTimeMillis();
     recursiveSort(dataToSort, 0, dataToSort.length-1, order);
-
-    // ending time
-    long timerEnd = System.currentTimeMillis();
-
-    // Record time elapsed
-    this.lastSortSpeed = timerEnd - timerStart;
-    
 
     return dataToSort;
   }
@@ -43,7 +34,7 @@ public class QuickSort extends Sorter {
     //If the counters pass each other, we must have looked at the entire array already
     while (frontCounter < backCounter) {
 
-      if (order == "ascending") {
+      if (order.equals("ascending")) {
 
         //Find a number on the left side that is too big (Or equal to the partition)
         while (dataToSort[frontCounter] < partition) {
@@ -59,7 +50,7 @@ public class QuickSort extends Sorter {
         }
         this.lastNumSortComparisons++;
 
-      } else if (order == "descending") {
+      } else if (order.equals("descending")) {
         
         //Find a number on the left side that is too big (Or equal to the partition)
         while (dataToSort[frontCounter] > partition) {

@@ -2,10 +2,7 @@
 
 
 public class SelectionSort extends Sorter {
-  public int[] sort(int[] unsortedArr, String order) {
-
-    // starting time
-    long start = System.currentTimeMillis();
+  public int[] internalSort(int[] unsortedArr, String order) {
 
     // clone/copy elements from the original array
     int[] arr = unsortedArr.clone();
@@ -36,12 +33,6 @@ public class SelectionSort extends Sorter {
         }
       }
     }
-
-    // ending time
-    long end = System.currentTimeMillis();
-
-    // Record time elapsed
-    this.lastSortSpeed = end - start;
 
     return arr;
   }
