@@ -132,13 +132,13 @@ public class Main implements ActionListener {
         optionPanel.add(startButton);
         
         // basic setup of panel for durations and comparisons
-        durationPanel.setSize(400, 356);
+        durationPanel.setSize(400, 360);
         durationPanel.setLocation(2, 202);
         durationPanel.setBorder(blackline);
         durationPanel.setLayout(null);
 
         // basic setup of panel for arrays (unsorted and sorted)
-        arrayPanel.setSize(796, 558);
+        arrayPanel.setSize(796, 562);
         arrayPanel.setLocation(404, 0);
         arrayPanel.setBorder(blackline);
         arrayPanel.setLayout(null);
