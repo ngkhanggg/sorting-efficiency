@@ -15,7 +15,6 @@ public class SelectionSort extends Sorter {
         if (order.equals("ascending")) {
           this.lastNumSortComparisons++;
           if (arr[i] > arr[j]) {
-            this.lastNumSortComparisons++;
             arr[i] = arr[j];
             arr[j] = temp;
           }
@@ -23,7 +22,6 @@ public class SelectionSort extends Sorter {
         else {
           this.lastNumSortComparisons++;
           if (arr[i] < arr[j]) {
-            this.lastNumSortComparisons++;
             arr[i] = arr[j];
             arr[j] = temp;
           }
