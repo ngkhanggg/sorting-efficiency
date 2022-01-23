@@ -1,45 +1,40 @@
 public class SelectionSort extends Sorter {
-    public String getName() {
-        return "Selection Sort";
-    }
-    
-    public int[] sort(int[] unsortedArr, String order) {
-        // clone the unsorted array
-        int[] arr = unsortedArr.clone();
+  public String getName() {
+      return "Selection Sort";
+  }
+  
+  public int[] internalSort(int[] unsortedArr, String order) {
 
-        long start = System.currentTimeMillis(); // start time
+    // clone/copy elements from the original array
+    int[] arr = unsortedArr.clone();
 
-        this.comparisons = 0;
+    for (int i = 0; i < arr.length - 1; i++) {
+      for (int j = i + 1; j < arr.length; j++) {
 
-        // algorithm
-        for (int i = 0; i < arr.length - 1; i++) {
-            for (int j = i + 1; j < arr.length; j++) {
-                int temp = arr[i];
+        // Used for swapping
+        int temp = arr[i];
 
-                // ascending order
-                if (order.equals("Ascending")) {
-                    if (arr[i] > arr[j]) {
-                        arr[i] = arr[j];
-                        arr[j] = temp;
-                    }
-                    this.comparisons++;
-                }
+        if (order.equals("ascending")) {
 
-                // descending order
-                else {
-                    if (arr[i] < arr[j]) {
-                        arr[i] = arr[j];
-                        arr[j] = temp;
-                    }
-                    this.comparisons++;
-                }
-            }
+          //If this value is smaller than our current smallest value, move it to index j
+          this.comparisons++;
+          if (arr[i] > arr[j]) {
+            arr[i] = arr[j];
+            arr[j] = temp;
+          }
         }
+        else {
 
-        long end = System.currentTimeMillis(); // end time
-
-        this.executionTime = end - start; // duration
-
-        return arr;
+          //If this value is bigger than our current smallest value, move it to index j
+          this.comparisons++;
+          if (arr[i] < arr[j]) {
+            arr[i] = arr[j];
+            arr[j] = temp;
+          }
+        }
+      }
     }
+
+    return arr;
+  }
 }

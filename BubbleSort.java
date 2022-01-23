@@ -1,43 +1,37 @@
 public class BubbleSort extends Sorter {
-    public String getName() {
-        return "Bubble Sort";
-    }
-    
-    public int[] sort(int[] unsortedArr, String order) {
-        // clone the unsorted array
-        int[] arr = unsortedArr.clone();
+  public String getName() {
+    return "Bubble Sort";
+  }
+  
+  public int[] internalSort(int[] unsortedArr, String order) {
 
-        long start = System.currentTimeMillis(); // start time
+    // clone/copy elements from the original array
+    int[] arr = unsortedArr.clone();
 
-        // algorithm
-        for (int i = 0; i < arr.length - 1; i++) {
-            for (int j = 0; j < arr.length - i - 1; j++) {
-                int temp = arr[j];
-
-                // ascending order
-                if (order.equals("Ascending")) {
-                    if (arr[j] > arr[j + 1]) {
-                        arr[j] = arr[j + 1];
-                        arr[j + 1] = temp;
-                    }
-                    this.comparisons++;
-                }
-
-                // descending order
-                else {
-                    if (arr[j] < arr[j + 1]) {
-                        arr[j] = arr[j + 1];
-                        arr[j + 1] = temp;
-                    }
-                    this.comparisons++;
-                }
-            }
+    for (int i = 0; i < arr.length - 1; i++) {
+      for (int j = 0; j < arr.length - i - 1; j++) {
+        // Store this in case we need to swap later
+        int temp = arr[j];
+  
+        if (order.equals("ascending")) {
+          // Swap current and next entry if current entry is bigger than next entry
+          this.comparisons++;
+          if (arr[j] > arr[j + 1]) {
+            arr[j] = arr[j + 1];
+            arr[j + 1] = temp;
+          }
         }
-
-        long end = System.currentTimeMillis(); // end time
-
-        this.executionTime = end - start; // duration
-
-        return arr;
+        else {
+          // Swap current and next entry if current entry is smaller than next entry
+          this.comparisons++;
+          if (arr[j] < arr[j + 1]) {
+            arr[j] = arr[j + 1];
+            arr[j + 1] = temp;
+          }
+        }
+      }
     }
+
+    return arr;
+  }
 }
