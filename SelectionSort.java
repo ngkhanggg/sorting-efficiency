@@ -1,40 +1,45 @@
-
-
-
 public class SelectionSort extends Sorter {
-  public int[] sort(int[] unsortedArr, String order) {
-    long start = System.currentTimeMillis(); // starting time
-
-    // clone/copy elements from the original array
-    int[] arr = unsortedArr.clone();
-
-    for (int i = 0; i < arr.length - 1; i++) {
-      for (int j = i + 1; j < arr.length; j++) {
-        int temp = arr[i];
-
-        if (order.equals("ascending")) {
-          this.lastNumSortComparisons++;
-          if (arr[i] > arr[j]) {
-            this.lastNumSortComparisons++;
-            arr[i] = arr[j];
-            arr[j] = temp;
-          }
-        }
-        else {
-          this.lastNumSortComparisons++;
-          if (arr[i] < arr[j]) {
-            this.lastNumSortComparisons++;
-            arr[i] = arr[j];
-            arr[j] = temp;
-          }
-        }
-      }
+    public String getName() {
+        return "Selection Sort";
     }
+    
+    public int[] sort(int[] unsortedArr, String order) {
+        // clone the unsorted array
+        int[] arr = unsortedArr.clone();
 
-    long end = System.currentTimeMillis(); // ending time
+        long start = System.currentTimeMillis(); // start time
 
-    this.lastSortSpeed = end - start;
+        this.comparisons = 0;
 
-    return arr;
-  }
+        // algorithm
+        for (int i = 0; i < arr.length - 1; i++) {
+            for (int j = i + 1; j < arr.length; j++) {
+                int temp = arr[i];
+
+                // ascending order
+                if (order.equals("Ascending")) {
+                    if (arr[i] > arr[j]) {
+                        arr[i] = arr[j];
+                        arr[j] = temp;
+                    }
+                    this.comparisons++;
+                }
+
+                // descending order
+                else {
+                    if (arr[i] < arr[j]) {
+                        arr[i] = arr[j];
+                        arr[j] = temp;
+                    }
+                    this.comparisons++;
+                }
+            }
+        }
+
+        long end = System.currentTimeMillis(); // end time
+
+        this.executionTime = end - start; // duration
+
+        return arr;
+    }
 }
