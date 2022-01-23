@@ -1,7 +1,8 @@
-
-
-
 public class BubbleSort extends Sorter {
+  public String getName() {
+    return "Bubble Sort";
+  }
+  
   public int[] internalSort(int[] unsortedArr, String order) {
 
     // clone/copy elements from the original array
@@ -14,7 +15,7 @@ public class BubbleSort extends Sorter {
   
         if (order.equals("ascending")) {
           // Swap current and next entry if current entry is bigger than next entry
-          this.lastNumSortComparisons++;
+          this.comparisons++;
           if (arr[j] > arr[j + 1]) {
             arr[j] = arr[j + 1];
             arr[j + 1] = temp;
@@ -22,7 +23,7 @@ public class BubbleSort extends Sorter {
         }
         else {
           // Swap current and next entry if current entry is smaller than next entry
-          this.lastNumSortComparisons++;
+          this.comparisons++;
           if (arr[j] < arr[j + 1]) {
             arr[j] = arr[j + 1];
             arr[j + 1] = temp;

@@ -1,15 +1,14 @@
-
-
-
 public class QuickSort extends Sorter {
+  public String getName() {
+        return "Quick Sort";
+    }
+  
+  public int[] internalSort(int[] unsortedArr, String order) {
+    int[] arr = unsortedArr.clone();
 
-  //This version of the method just sorts the array. It existing allows isRecordingTime, isRecordingIterations, recordingName to have default parameters
-  public int[] internalSort(int[] unsortedData, String order) {
-    int[] dataToSort = unsortedData.clone();
+    recursiveSort(arr, 0, arr.length-1, order);
 
-    recursiveSort(dataToSort, 0, dataToSort.length-1, order);
-
-    return dataToSort;
+    return arr;
   }
 
   private void recursiveSort(int[] dataToSort, int left, int right, String order) {
@@ -38,38 +37,38 @@ public class QuickSort extends Sorter {
 
         //Find a number on the left side that is too big (Or equal to the partition)
         while (dataToSort[frontCounter] < partition) {
-          this.lastNumSortComparisons++;
+          this.comparisons++;
           frontCounter++;
         }
-        this.lastNumSortComparisons++;
+        this.comparisons++;
 
         //Find a number on the right side that is too small (Or equal to the partition)
         while (dataToSort[backCounter] > partition) {
-          this.lastNumSortComparisons++;
+          this.comparisons++;
           backCounter--;
         }
-        this.lastNumSortComparisons++;
+        this.comparisons++;
 
       } else if (order.equals("descending")) {
         
         //Find a number on the left side that is too big (Or equal to the partition)
         while (dataToSort[frontCounter] > partition) {
-          this.lastNumSortComparisons++;
+          this.comparisons++;
           frontCounter++;
         }
-        this.lastNumSortComparisons++;
+        this.comparisons++;
 
         //Find a number on the right side that is too small (Or equal to the partition)
         while (dataToSort[backCounter] < partition) {
-          this.lastNumSortComparisons++;
+          this.comparisons++;
           backCounter--;
         }
-        this.lastNumSortComparisons++;
+        this.comparisons++;
       }
       
       
       //Don't do any swapping if the counters have passed each other
-      this.lastNumSortComparisons++;
+      this.comparisons++;
       if (frontCounter <= backCounter) {        
         temp = dataToSort[frontCounter];
         dataToSort[frontCounter] = dataToSort[backCounter];
@@ -80,7 +79,7 @@ public class QuickSort extends Sorter {
         backCounter--;
       }
     }
-    this.lastNumSortComparisons++;
+    this.comparisons++;
     
     //Sort the value left of the partition
     recursiveSort(dataToSort, frontCounter, right, order);

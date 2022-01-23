@@ -1,11 +1,9 @@
 public abstract class Sorter {
 
-    // Store how fast the last sort() function called was
-    long lastSortSpeed;
+    protected long executionTime;
+    protected int comparisons;
 
-    // Store how many time a sort() compared to entries of the array
-    int lastNumSortComparisons;
-
+    public abstract String getName();
 
     public int[] sort(int[] unsortedArr, String order) {
       
@@ -48,11 +46,15 @@ public abstract class Sorter {
 
     public abstract int[] internalSort(int[] unsortedArr, String order);
 
-    public long getLastExecutionTime() {
-      return lastSortSpeed;
+    public long getExecutionTime() {
+        return executionTime;
     }
 
-    public int getLastNumOfComparisons() {
-      return lastNumSortComparisons;
+    public int getComparisons() {
+        return comparisons;
+    }
+
+    public String stringForGUI() {
+        return String.format("<html>%s<br/>- ran in %s milliseconds<br/>- used %s comparisons</html>", getName(), getExecutionTime(), getComparisons());
     }
 }
