@@ -3,19 +3,11 @@ public class QuickSort extends Sorter {
         return "Quick Sort";
     }
 
-    public int[] sort(int[] unsortedArr, String order) {
+    public int[] internalSort(int[] unsortedArr, String order) {
         // clone the unsorted array
         int[] arr = unsortedArr.clone();
 
-        long start = System.currentTimeMillis(); // start time
-
-        this.comparisons = 0;
-
         recursiveSort(arr, 0, arr.length-1, order);
-
-        long end = System.currentTimeMillis(); // end time
-
-        this.executionTime = end - start; // duration
 
         return arr;
     }
