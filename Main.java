@@ -65,6 +65,7 @@ public class Main implements ActionListener {
     BubbleSort bubble = new BubbleSort();
     SelectionSort selection = new SelectionSort();
     QuickSort quick = new QuickSort();
+    MergeSort merge = new MergeSort();
 
     public Main() {
         // set up frame
@@ -210,19 +211,24 @@ public class Main implements ActionListener {
             case "Bubble Sort":
                 selection.sort(arr, order);
                 quick.sort(arr, order);
+                merge.sort(arr, order);
                 return bubble.sort(arr, order);
             case "Selection Sort":
                 bubble.sort(arr, order);
                 quick.sort(arr, order);
+                merge.sort(arr, order);
                 return selection.sort(arr, order);
             case "Quick Sort":
                 bubble.sort(arr, order);
                 selection.sort(arr, order);
+                merge.sort(arr, order);
                 return quick.sort(arr, order);
-            default:
+            case "Merge Sort":
                 bubble.sort(arr, order);
                 selection.sort(arr, order);
                 quick.sort(arr, order);
+                return merge.sort(arr, order);
+            default:
                 return arr;
         }
     }
@@ -265,7 +271,7 @@ public class Main implements ActionListener {
 
         // TEMPORARY FOR MERGE SORT
         durationOfMergeSort.setFont(myFont);
-        durationOfMergeSort.setText(bubble.stringForGUI()); // change bubble to merge
+        durationOfMergeSort.setText(merge.stringForGUI()); // change bubble to merge
         durationOfMergeSort.setBounds(20, 260, 250, 90);
 
         durationPanel.repaint(); // update panel
@@ -349,6 +355,6 @@ public class Main implements ActionListener {
 
     // start program
     public static void main(String[] args) {
-        new Main();
+      new Main();
     }
 }
