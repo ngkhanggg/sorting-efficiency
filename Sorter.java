@@ -18,22 +18,24 @@ public abstract class Sorter {
       this.executionTime = end - start;
 
       //Check to make sure the array is actually sorted in the right order
-      if (order.equals("ascending")) {
+      if (order.equals("Ascending")) {
         for (int i = 0;i < sortedArr.length-1;i++) {
           //If any array entry is bigger than the one following it, the array is not sorted
           if (sortedArr[i] > sortedArr[i+1]) {
             System.out.println("------------------------------------------------------");
             System.out.println("WARNING! Array not properly sorted in ascending order!");
             System.out.println("------------------------------------------------------");
+            break;
           }
         }
-      } else if (order.equals("descending")) {
+      } else if (order.equals("Descending")) {
         for (int i = 0;i < sortedArr.length-1;i++) {
           //If any array entry is smaller than the one following it, the array is not sorted
           if (sortedArr[i] < sortedArr[i+1]) {
             System.out.println("------------------------------------------------------");
             System.out.println("WARNING! Array not properly sorted in descending order!");
             System.out.println("------------------------------------------------------");
+            break;
           }
         }
       }

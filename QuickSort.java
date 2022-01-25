@@ -33,7 +33,6 @@ public class QuickSort extends Sorter {
 
         //If the counters pass each other, we must have looked at the entire array
         while (frontCounter < backCounter) {
-            this.comparisons++;
 
             if (order.equals("Ascending")) {
                 //Find a number on the left side that is too big (Or equal to the partition)
@@ -67,8 +66,6 @@ public class QuickSort extends Sorter {
                 this.comparisons++;
             }
 
-            this.comparisons++;
-
             //Don't do any swapping if the counters have passed each other
             if (frontCounter <= backCounter) {
                 temp = arr[frontCounter];
@@ -79,9 +76,7 @@ public class QuickSort extends Sorter {
                 frontCounter++;
                 backCounter--;
             }
-            this.comparisons++;
         }
-        this.comparisons++;
 
         //Sort the value left of the partition
         recursiveSort(arr, frontCounter, right, order);
