@@ -16,9 +16,7 @@ public abstract class Sorter {
       long end = System.currentTimeMillis();
 
       // Record time elapsed
-      this.lastSortSpeed = end - start;
-
-      sortedArr[3] = 999;
+      this.executionTime = end - start;
 
       //Check to make sure the array is actually sorted in the right order
       if (order.equals("ascending")) {
