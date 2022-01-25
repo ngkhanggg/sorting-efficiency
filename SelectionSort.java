@@ -3,13 +3,9 @@ public class SelectionSort extends Sorter {
         return "Selection Sort";
     }
     
-    public int[] sort(int[] unsortedArr, String order) {
+    public int[] internalSort(int[] unsortedArr, String order) {
         // clone the unsorted array
         int[] arr = unsortedArr.clone();
-
-        long start = System.currentTimeMillis(); // start time
-
-        this.comparisons = 0;
 
         // algorithm
         for (int i = 0; i < arr.length - 1; i++) {
@@ -35,10 +31,6 @@ public class SelectionSort extends Sorter {
                 }
             }
         }
-
-        long end = System.currentTimeMillis(); // end time
-
-        this.executionTime = end - start; // duration
 
         return arr;
     }
