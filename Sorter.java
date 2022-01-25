@@ -1,5 +1,4 @@
 public abstract class Sorter {
-
     protected long executionTime;
     protected int comparisons;
 

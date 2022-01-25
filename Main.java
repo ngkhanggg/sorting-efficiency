@@ -162,7 +162,7 @@ public class Main implements ActionListener {
         if (e.getSource() == startButton) {
             disableComboboxes();
 
-            procceedSorting();
+            proccedSorting();
 
             setupDurationPanel();
 
@@ -228,7 +228,7 @@ public class Main implements ActionListener {
     }
 
     // proceed the sorting
-    public void procceedSorting() {
+    public void proccedSorting() {
         // get the items from the comboboxes
         int arraySize = (int)boxOfSizesOfArray.getSelectedItem();
         String sorter = String.valueOf(boxOfSortingMethods.getSelectedItem());
