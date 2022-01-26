@@ -1,3 +1,5 @@
+// Sorter subclass. Sorts using the merge sort algorithm
+
 public class MergeSort extends Sorter {
   public String getName() {
       return "Merge Sort";

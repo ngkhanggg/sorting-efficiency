@@ -1,3 +1,5 @@
+// Sorter subclass. Sorts using the quick sort algorithm
+
 public class QuickSort extends Sorter {
     public String getName() {
         return "Quick Sort";

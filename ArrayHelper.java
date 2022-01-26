@@ -1,3 +1,5 @@
+// Helper class which contains all the array related variables and methods that the GUI needs to use
+
 import java.util.Random;
 
 public class ArrayHelper {
@@ -7,7 +9,7 @@ public class ArrayHelper {
   int[] sortedArr;
 
   // generate an array with random numbers
-  public static int[] generateArray(int size) {
+  public int[] generateArray(int size) {
     Random rd = new Random();
 
     int[] arr = new int[size];

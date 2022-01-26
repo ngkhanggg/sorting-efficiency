@@ -1,3 +1,5 @@
+// Sorter parent class. Provides the time and comparison count storage and retrival, GUI interaction, and checks to make sure the sort function worked correctly
+
 public abstract class Sorter {
 
     // These store values for the last sort that was run in the class instance

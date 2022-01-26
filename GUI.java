@@ -1,3 +1,5 @@
+// GUI class. This is contains the display, the buttons, and the actionPerformed ActionListener method to detect user actions. Non-GUI related code is run via methods from a SorterHelper instance and an ArrayHelper instance
+
 import java.awt.*;
 import java.awt.event.*;
 import java.io.FileNotFoundException;

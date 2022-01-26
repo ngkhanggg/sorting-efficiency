@@ -1,3 +1,5 @@
+// Sorter subclass. Sorts using the selection sort algorithm
+
 public class SelectionSort extends Sorter {
     public String getName() {
         return "Selection Sort";

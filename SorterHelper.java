@@ -1,3 +1,5 @@
+// Helper class. Contains sorter sublclass instances and all the sorting related methods needed by the GUI
+
 public class SorterHelper {
 
     BubbleSort bubble = new BubbleSort();
