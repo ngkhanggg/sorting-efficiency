@@ -1,9 +1,13 @@
 public abstract class Sorter {
+
+    // These store values for the last sort that was run in the class instance
     protected long executionTime;
     protected int comparisons;
 
+    // Returns the type of sort the class is
     public abstract String getName();
 
+    // Calls the inherited sort method, and records its execution time
     public int[] sort(int[] unsortedArr, String order) {
       
       // starting time

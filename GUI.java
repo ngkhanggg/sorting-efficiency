@@ -162,7 +162,6 @@ public class GUI implements ActionListener {
         if (e.getSource() == startButton) {
             disableComboboxes();
 
-            //CHANGE
             proccedSorting();
 
             setupDurationPanel();
@@ -183,7 +182,7 @@ public class GUI implements ActionListener {
 		// reset button
         if (e.getSource() == resetButton) {
             frame.dispose();
-            new Main();
+            new GUI(new SorterHelper(), new ArrayHelper());
         }
 
 		// close button
@@ -205,13 +204,6 @@ public class GUI implements ActionListener {
         // sort the array
         arrayHelp.setSortedArray(sortingHelp.sort(arrayHelp.getUnsortedArray(), sorter, sortOrder));
 
-        //idk what this was for so ill leave it
-        // It's setting the class variables, but I don't know why it had intermidiary arrays
-        /*
-        arrUnsorted = unsortedArr.clone();
-        arrSorted = sortedArr.clone();
-        */
-
         addArraysToPanel(arraySize, arrayHelp.arrayToString(arrayHelp.getUnsortedArray()), arrayHelp.arrayToString(arrayHelp.getSortedArray()));
     }
 
@@ -232,7 +224,7 @@ public class GUI implements ActionListener {
         durationOfQuickSort.setText(sortingHelp.getExecutionDetails("Quick Sort"));
         durationOfQuickSort.setBounds(20, 180, 250, 90);
 
-        // TEMPORARY FOR MERGE SORT
+        // duration of merge sort as output
         durationOfMergeSort.setFont(myFont);
         durationOfMergeSort.setText(sortingHelp.getExecutionDetails("Merge Sort")); // change bubble to merge
         durationOfMergeSort.setBounds(20, 260, 250, 90);

@@ -14,9 +14,7 @@ public class QuickSort extends Sorter {
 
     public void recursiveSort(int[] arr, int left, int right, String order) {
         
-        //Left should not be to the right of right
-        //If it is, don't run the function
-        //If Left and right are equal, that means its asking for a single entry, which is sorted already so nothing needs to be done
+        //Left should not be to the right of right. If it is, don't run the function. If Left and right are equal, that means its asking for a single entry, and a single entry is sorted already so nothing needs to be done
         if (left >= right) {
             return;
         }
