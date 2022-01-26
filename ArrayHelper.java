@@ -8,14 +8,14 @@ public class ArrayHelper {
   int[] unsortedArr;
   int[] sortedArr;
 
-  // generate an array with random numbers
+  // generate an array with random numbers from -10000 to 10000
   public int[] generateArray(int size) {
     Random rd = new Random();
 
     int[] arr = new int[size];
 
     for (int i = 0; i < size; i++) {
-        arr[i] = rd.nextInt(20000) - 10000;
+      arr[i] = rd.nextInt(20001) - 10000;
     }
 
     return arr;

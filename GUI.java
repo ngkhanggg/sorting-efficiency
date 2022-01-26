@@ -23,7 +23,7 @@ public class GUI implements ActionListener {
     ArrayHelper arrayHelp;
 
     // arrays
-    final Integer[] sizesOfArray = {10, 100, 1000};
+    final Integer[] sizesOfArray = {10, 100, 1000, 5000};
     final String[] namesOfSorters = {"Bubble Sort", "Selection Sort", "Quick Sort", "Merge Sort"};
     final String[] sortingOrders = {"Ascending", "Descending"};
 
@@ -244,8 +244,8 @@ public class GUI implements ActionListener {
     public void addArraysToPanel(int size, String unsortedArray, String sortedArray) {
         arrayPanel.repaint();
         
-        if (size == 1000) {
-            String mess = "You really think you can output 2000 numbers in side this little panel? Close this program and check the two text files in your folder!";
+        if (size >= 1000) {
+            String mess = "You really think you can output thousands of numbers in side this little panel? Close this program and check the two text files in your folder!";
             cannotOutputArr.setFont(myFont);
             cannotOutputArr.setBounds(20, 20, 740, 300);
             cannotOutputArr.setText("<html><p style=\"width:550px\">" + mess + "</p></html>");
