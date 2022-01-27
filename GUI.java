@@ -190,7 +190,7 @@ public class GUI implements ActionListener {
 		    // reset button
         if (e.getSource() == resetButton) {
             frame.dispose();
-            new GUI(new SorterHelper(), new ArrayHelper());0
+            new GUI(new SorterHelper(), new ArrayHelper());
         }
 
 		    // close button
