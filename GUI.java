@@ -31,7 +31,7 @@ public class GUI implements ActionListener {
     final Border blackline = BorderFactory.createLineBorder(Color.black);
 
     // font of all the text
-    final Font myFont = new Font("Times New Roman", Font.BOLD, 18);
+    final Font myFont = new Font("Times New Roman", Font.BOLD, 14);
 
     // buttons
     JButton startButton = new JButton();
@@ -190,7 +190,7 @@ public class GUI implements ActionListener {
 		    // reset button
         if (e.getSource() == resetButton) {
             frame.dispose();
-            new GUI(new SorterHelper(), new ArrayHelper());
+            new GUI(new SorterHelper(), new ArrayHelper());0
         }
 
 		    // close button
