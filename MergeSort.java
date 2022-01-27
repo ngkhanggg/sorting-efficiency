@@ -1,3 +1,5 @@
+// Sorter subclass. Sorts using the merge sort algorithm
+
 public class MergeSort extends Sorter {
   public String getName() {
       return "Merge Sort";
@@ -8,6 +10,7 @@ public class MergeSort extends Sorter {
     return recursiveSort(unsortedArr, order);
   }
 
+  // Algorithm
   public int[] recursiveSort(int[] unsortedArr, String order) {
       
     // Base case: We have broken the array down to a single element
@@ -22,6 +25,7 @@ public class MergeSort extends Sorter {
     int[] left = new int[midpoint];
     int[] right;
 
+    // Make right the correct length
     if (unsortedArr.length % 2 == 0) {
       right = new int[midpoint];
     } else {
@@ -32,12 +36,11 @@ public class MergeSort extends Sorter {
     for (int i = 0;i < left.length;i++) {
       left[i] = unsortedArr[i];
     }
-
     for (int i = 0;i < right.length;i++) {
       right[i] = unsortedArr[i+midpoint];
     }
 
-    // Make the sorted version of our unsorted array
+    // Make an empty array for the sorted version of our unsorted array
     int[] result = new int[unsortedArr.length];
 
     // Sort our left and right halves
@@ -50,29 +53,29 @@ public class MergeSort extends Sorter {
     return result;
   }
 
-  // Takes two lists and makes them into a single sorted list
+  // Takes two arrays and makes them into a single sorted array
   public int[] merge(int[] left, int[] right, String order) {
     
-    // The list created by merging the two lists
+    // The array created by merging the two arrays
     int[] result = new int[left.length + right.length];
 
-    // The counter for the merged list
+    // The counter for the merged array
     int x = 0;
 
-    // The counter for the left list
+    // The counter for the left array
     int i = 0;
 
-    // The conuter for the right list
+    // The conuter for the right array
     int j = 0;
 
-    // While either list still has items left to add
+    // While either array still has items left to add
     while (i < left.length || j < right.length) {
 
-      // If both lists have items left to add
+      // If both arrays have items left to add
       if (i < left.length && j < right.length) {
         if (order.equals("Ascending")) {
 
-          // Add the item that is smaller
+          // Choose the array whose item is smaller
           this.comparisons++;
           if (left[i] < right[j]) {
             result[x] = left[i];
@@ -83,7 +86,7 @@ public class MergeSort extends Sorter {
           }
         } else {
           
-          // Add the item that is bigger
+          // Choose the array whose item is bigger
           this.comparisons++;
           if (left[i] > right[j]) {
             result[x] = left[i];
@@ -95,18 +98,19 @@ public class MergeSort extends Sorter {
         }
       }
 
-      // If only the left list has items, add an item from it
+      // If only the left array has items, add an item from it
       else if (i < left.length) {
         result[x] = left[i];
         i++;
       }
       
-      // If only the right list has items, add an item from it
+      // If only the right array has items, add an item from it
       else if (j < right.length) {
         result[x] = right[j];
         j++;
       }
 
+      // Onto the next index of the merged array
       x++;
     }
 

@@ -1,9 +1,15 @@
+// Sorter parent class. Provides the time and comparison count storage and retrival, GUI interaction, and checks to make sure the sort function worked correctly
+
 public abstract class Sorter {
+
+    // These store data for the last sort that the class ran
     protected long executionTime;
     protected int comparisons;
 
+    // Returns the type of sorter the class is
     public abstract String getName();
 
+    // Calls the inherited sort method, and records its execution time
     public int[] sort(int[] unsortedArr, String order) {
       
       // starting time

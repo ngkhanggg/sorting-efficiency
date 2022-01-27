@@ -1,3 +1,5 @@
+// Sorter subclass. Sorts using the quick sort algorithm
+
 public class QuickSort extends Sorter {
     public String getName() {
         return "Quick Sort";
@@ -14,9 +16,7 @@ public class QuickSort extends Sorter {
 
     public void recursiveSort(int[] arr, int left, int right, String order) {
         
-        //Left should not be to the right of right
-        //If it is, don't run the function
-        //If Left and right are equal, that means its asking for a single entry, which is sorted already so nothing needs to be done
+        //Base case: Left should not be to the right of right. If it is, we've gone too far, so don't run the function. If Left and right are equal, that means its asking for a single entry, and a single entry is sorted already so nothing needs to be done
         if (left >= right) {
             return;
         }
@@ -24,10 +24,10 @@ public class QuickSort extends Sorter {
         //The number that will divide the array into higher than and lower than numbers
         int partition = arr[(int)((left+right) / 2)];
 
-        //The counter that will search for numbers higher than the partition
+        //The counter that will search for out of place numbers on the left of the partition
         int frontCounter = left;
 
-        //The counter that will search for numbers lower than the partition
+        //The counter that will search for out of place numbers on the right of the partition
         int backCounter = right;
         int temp;
 
@@ -35,14 +35,14 @@ public class QuickSort extends Sorter {
         while (frontCounter < backCounter) {
 
             if (order.equals("Ascending")) {
-                //Find a number on the left side that is too big (Or equal to the partition)
+                //Find a number on the left side that is bigger or equal to the partition
                 while (arr[frontCounter] < partition) {
                     this.comparisons++;
                     frontCounter++;
                 }
                 this.comparisons++;
 
-                //Find a number on the right side that is too small (Or equal to the partition)
+                //Find a number on the right side that is smaller or equal to the partition
                 while (arr[backCounter] > partition) {
                     this.comparisons++;
                     backCounter--;
@@ -51,14 +51,14 @@ public class QuickSort extends Sorter {
             }
 
             else if (order.equals("Descending")) {
-                //Find a number on the left side that is too big (Or equal to the partition)
+                //Find a number on the left side that is smaller or equal to the partition
                 while (arr[frontCounter] > partition) {
                     this.comparisons++;
                     frontCounter++;
                 }
                 this.comparisons++;
 
-                //Find a number on the right side that is too small (Or equal to the partition)
+                //Find a number on the right side that is bigger or equal to the partition
                 while (arr[backCounter] < partition) {
                     this.comparisons++;
                     backCounter--;
@@ -78,7 +78,7 @@ public class QuickSort extends Sorter {
             }
         }
 
-        //Sort the value left of the partition
+        //Sort the values left of the partition
         recursiveSort(arr, frontCounter, right, order);
 
         //Sort the values right of the partition

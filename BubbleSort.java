@@ -1,3 +1,5 @@
+// Sorter subclass. Sorts using the bubble sort algorithm
+
 public class BubbleSort extends Sorter {
     public String getName() {
         return "Bubble Sort";
