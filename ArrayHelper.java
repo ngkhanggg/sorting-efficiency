@@ -8,12 +8,13 @@ public class ArrayHelper {
   int[] unsortedArr;
   int[] sortedArr;
 
-  // generate an array with random numbers from -10000 to 10000
+  // generate an array of specified size with random numbers from -10000 to 10000
   public int[] generateArray(int size) {
     Random rd = new Random();
 
     int[] arr = new int[size];
 
+    // Populate the array
     for (int i = 0; i < size; i++) {
       arr[i] = rd.nextInt(20001) - 10000;
     }
@@ -21,7 +22,7 @@ public class ArrayHelper {
     return arr;
   }
 
-  // turn an array into a string
+  // Return an array as a string
   public String arrayToString(int[] arr) {
     String s = "";
 

@@ -38,7 +38,7 @@ public class GUI implements ActionListener {
     JButton resetButton = new JButton();
     JButton closeButton = new JButton();
 
-    // comboxboxes
+    // combo boxes
     JComboBox<Integer> boxOfSizesOfArray = new JComboBox<>(sizesOfArray);
     JComboBox<String> boxOfSortingMethods = new JComboBox<>(namesOfSorters);
     JComboBox<String> boxOfSortingOrders = new JComboBox<>(sortingOrders);
@@ -47,13 +47,19 @@ public class GUI implements ActionListener {
     JFrame frame = new JFrame();
 
     // labels
+
+    // Labels where the user chooses sorting options
     JLabel messSizeOfArray = new JLabel();
     JLabel messTypeOfSort = new JLabel();
     JLabel messSortingOrder = new JLabel();
+
+    // Labels for output of the times and comparisons for each sort
     JLabel durationOfBubbleSort = new JLabel();
     JLabel durationOfSelectionSort = new JLabel();
     JLabel durationOfQuickSort = new JLabel();
     JLabel durationOfMergeSort = new JLabel();
+
+    // Labels for outputting the arrays
     JLabel unsortedArr = new JLabel();
     JLabel sortedArr = new JLabel();
     JLabel cannotOutputArr = new JLabel();
@@ -65,7 +71,7 @@ public class GUI implements ActionListener {
 
     public GUI(SorterHelper sortingHelp, ArrayHelper arrayHelp) {
         
-        // Set up the helpers
+        // set up helpers
         this.sortingHelp = sortingHelp;
         this.arrayHelp = arrayHelp;
 
@@ -181,13 +187,13 @@ public class GUI implements ActionListener {
             }
         }
 
-		// reset button
+		    // reset button
         if (e.getSource() == resetButton) {
             frame.dispose();
             new GUI(new SorterHelper(), new ArrayHelper());
         }
 
-		// close button
+		    // close button
         if (e.getSource() == closeButton) {
             System.exit(0);
         }
@@ -230,8 +236,9 @@ public class GUI implements ActionListener {
         durationOfMergeSort.setFont(myFont);
         durationOfMergeSort.setText(sortingHelp.getExecutionDetails("Merge Sort")); // change bubble to merge
         durationOfMergeSort.setBounds(20, 260, 250, 90);
-
-        durationPanel.repaint(); // update panel
+        
+        // update panel
+        durationPanel.repaint();
 
         // add labels to the panel
         durationPanel.add(durationOfBubbleSort);
@@ -244,6 +251,7 @@ public class GUI implements ActionListener {
     public void addArraysToPanel(int size, String unsortedArray, String sortedArray) {
         arrayPanel.repaint();
         
+        // If there are too many numbers for the panel to hold
         if (size >= 1000) {
             String mess = "You really think you can output thousands of numbers in side this little panel? Close this program and check the two text files in your folder!";
             cannotOutputArr.setFont(myFont);
