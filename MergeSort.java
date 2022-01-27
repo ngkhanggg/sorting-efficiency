@@ -60,58 +60,58 @@ public class MergeSort extends Sorter {
     int[] result = new int[left.length + right.length];
 
     // The counter for the merged array
-    int x = 0;
+    int mergeIndex = 0;
 
     // The counter for the left array
-    int i = 0;
+    int leftIndex = 0;
 
     // The conuter for the right array
-    int j = 0;
+    int rightIndex = 0;
 
     // While either array still has items left to add
-    while (i < left.length || j < right.length) {
+    while (leftIndex < left.length || rightIndex < right.length) {
 
       // If both arrays have items left to add
-      if (i < left.length && j < right.length) {
+      if (leftIndex < left.length && rightIndex < right.length) {
         if (order.equals("Ascending")) {
 
           // Choose the array whose item is smaller
           this.comparisons++;
-          if (left[i] < right[j]) {
-            result[x] = left[i];
-            i++;
+          if (left[leftIndex] < right[rightIndex]) {
+            result[mergeIndex] = left[leftIndex];
+            leftIndex++;
           } else {
-            result[x] = right[j];
-            j++;
+            result[mergeIndex] = right[rightIndex];
+            rightIndex++;
           }
         } else {
           
           // Choose the array whose item is bigger
           this.comparisons++;
-          if (left[i] > right[j]) {
-            result[x] = left[i];
-            i++;
+          if (left[leftIndex] > right[rightIndex]) {
+            result[mergeIndex] = left[leftIndex];
+            leftIndex++;
           } else {
-            result[x] = right[j];
-            j++;
+            result[mergeIndex] = right[rightIndex];
+            rightIndex++;
           }
         }
       }
 
       // If only the left array has items, add an item from it
-      else if (i < left.length) {
-        result[x] = left[i];
-        i++;
+      else if (leftIndex < left.length) {
+        result[mergeIndex] = left[leftIndex];
+        leftIndex++;
       }
       
       // If only the right array has items, add an item from it
-      else if (j < right.length) {
-        result[x] = right[j];
-        j++;
+      else if (rightIndex < right.length) {
+        result[mergeIndex] = right[rightIndex];
+        rightIndex++;
       }
 
       // Onto the next index of the merged array
-      x++;
+      mergeIndex++;
     }
 
     return result;
